@@ -12,6 +12,7 @@ Node.js open source mall NideShop management backend (based on [Node.js](https:/
 + Brand Management
 + Member Management
 + Order Management
++ Translatable interface
 
 ## Build Setup
 
