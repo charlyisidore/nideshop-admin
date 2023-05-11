@@ -29,9 +29,11 @@
         <sidebar></sidebar>
         <navbar></navbar>
         <div class="content">
-            <transition name="router-fade" mode="out-in">
-                <router-view></router-view>
-            </transition>
+            <router-view v-slot="{ Component }">
+                <transition name="router-fade" mode="out-in">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
             <a class="footer" href="https://github.com/tumobi" target="_blank"> nideshop created by tumobi</a>
         </div>
     </div>
