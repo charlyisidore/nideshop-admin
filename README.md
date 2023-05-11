@@ -1,5 +1,5 @@
 # nideshop-admin
-Node.js开源商城NideShop管理后台（基于Node.js、Vue.js、Element UI、~~Electron~~）
+Node.js开源商城NideShop管理后台（基于Node.js、Vue.js、Element UI）
 
 ### 此测试版已停止开发，请不要下载使用。最新重构版正在开发中，敬请期待...
 
@@ -36,8 +36,3 @@ admin
 admin888
 
 喜欢别忘了Star 本项目长期更新完善，欢迎Watch 交流QQ群：497145766
-
-
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[b31b441](https://github.com/SimulatedGREG/electron-vue/tree/b31b44123ad42acac12337c4955df4ead853f0df) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
