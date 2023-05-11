@@ -46,7 +46,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@element-plus/icons-vue@npm:^2.0.6":
+"@element-plus/icons-vue@npm:^2.0.6, @element-plus/icons-vue@npm:^2.1.0":
   version: 2.1.0
   resolution: "@element-plus/icons-vue@npm:2.1.0"
   peerDependencies:
@@ -1331,6 +1331,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nideshop-admin@workspace:."
   dependencies:
+    "@element-plus/icons-vue": ^2.1.0
     "@vitejs/plugin-vue": ^4.2.1
     axios: ^1.4.0
     element-plus: ^2.3.4
