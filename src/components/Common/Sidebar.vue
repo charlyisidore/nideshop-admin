@@ -1,7 +1,7 @@
 <template>
     <div class="left-box">
         <div class="logo">
-            <img src="static/images/logo.png"/>
+            <img src="/static/images/logo.png"/>
         </div>
         <el-menu class="sidebar" :unique-opened="true" :default-active="currentPagePath" @open="handleOpen"
                  :router="true" theme="dark" @close="handleClose">

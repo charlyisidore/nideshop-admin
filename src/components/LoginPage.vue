@@ -2,7 +2,7 @@
     <div class="login">
         <div class="login-box">
             <div class="logo">
-                <img src="static/images/logo.png"/>
+                <img src="/static/images/logo.png"/>
             </div>
             <div class="body">
                 <p class="tips">欢迎使用NideShop后台管理</p>
