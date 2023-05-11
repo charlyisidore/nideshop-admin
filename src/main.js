@@ -2,12 +2,22 @@ import 'element-plus/dist/index.css'
 
 import { createApp } from 'vue'
 import axios from 'axios'
-import ElementPlus from 'element-plus'
 import VueAxios from 'vue-axios'
+import ElementPlus from 'element-plus'
+import { createI18n } from 'vue-i18n'
 import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
+
+const i18n = createI18n({
+    locale: 'en',
+    fallbackLocale: 'zh',
+    messages: {
+        en: await import('./locales/en.json'),
+        zh: await import('./locales/zh.json'),
+    },
+})
 
 router.beforeEach((to, from, next) => {
 	let token = localStorage.getItem('token') || '';
@@ -29,6 +39,7 @@ router.beforeEach((to, from, next) => {
 
 app.use(VueAxios, axios)
 app.use(ElementPlus)
+app.use(i18n)
 app.use(router)
 
 app.mount('#app')
