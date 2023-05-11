@@ -38,7 +38,7 @@
   "mall_operation": "商城运营",
   "icon": "图标",
   "female": "女",
-  "sub-title": "子标题",
+  "sub_title": "子标题",
   "bmw": "宝马",
   "password": "密码",
   "password_length_requirement": "密码不得低于6个字符",

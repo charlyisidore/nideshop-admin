@@ -38,7 +38,7 @@
   "mall_operation": "Mall Operation",
   "icon": "Icon",
   "female": "Female",
-  "sub-title": "Sub-title",
+  "sub_title": "Sub-title",
   "bmw": "BMW",
   "password": "Password",
   "password_length_requirement": "Password must be no less than 6 characters",
