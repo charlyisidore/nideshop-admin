@@ -2,42 +2,42 @@
     <div class="content-page">
         <div class="content-nav">
             <el-breadcrumb class="breadcrumb" separator="/">
-                <el-breadcrumb-item :to="{ name: 'dashboard' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>商城运营</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ infoForm.id ? '编辑专题' : '添加专题' }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ name: 'dashboard' }">{{ $t('home_page') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ $t('mall_operation') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ infoForm.id ? $t('edit_topic') : $t('add_topic') }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" icon="arrow-left">返回列表</el-button>
+                <el-button type="primary" @click="goBackPage" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
             </div>
         </div>
         <div class="content-main">
             <div class="form-table-box">
                 <el-form ref="infoForm" :rules="infoRules" :model="infoForm" label-width="120px">
-                    <el-form-item label="标题" prop="title">
+                    <el-form-item :label="$t('title')" prop="title">
                         <el-input v-model="infoForm.title"></el-input>
                     </el-form-item>
-                    <el-form-item label="子标题" prop="subtitle">
+                    <el-form-item :label="$t('sub_title')" prop="subtitle">
                         <el-input type="textarea" v-model="infoForm.subtitle" :rows="3"></el-input>
                         <div class="form-tip"></div>
                     </el-form-item>
-                    <el-form-item label="缩略图" prop="scene_pic_url">
+                    <el-form-item :label="$t('thumbnails')" prop="scene_pic_url">
                         <el-upload class="image-uploader" name="scene_pic_url"
                             action="http://127.0.0.1:8360/admin/upload/topicThumb" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.scene_pic_url" :src="infoForm.scene_pic_url" class="image-show">
                             <i v-else class="el-icon-plus image-uploader-icon"></i>
                         </el-upload>
-                        <div class="form-tip">图片尺寸：750*415</div>
+                        <div class="form-tip">{{ $t('image_750_415_size_requirement') }}</div>
                     </el-form-item>
-                    <el-form-item label="排序">
+                    <el-form-item :label="$t('sort')">
                         <el-input-number v-model="infoForm.sort_order" :min="1" :max="1000"></el-input-number>
                     </el-form-item>
-                    <el-form-item label="启用">
+                    <el-form-item :label="$t('enable')">
                         <el-switch v-model="infoForm.is_show"></el-switch>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmitInfo">确定保存</el-button>
-                        <el-button @click="goBackPage">取消</el-button>
+                        <el-button type="primary" @click="onSubmitInfo">{{ $t('ok_to_save') }}</el-button>
+                        <el-button @click="goBackPage">{{ $t('cancel') }}</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -63,13 +63,13 @@ export default {
             },
             infoRules: {
                 title: [
-                    { required: true, message: '请输入标题', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_the_title'), trigger: 'blur' },
                 ],
                 subtitle: [
-                    { required: true, message: '请输入子标题', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_a_subheading'), trigger: 'blur' },
                 ],
                 scene_pic_url: [
-                    { required: true, message: '请选择缩略图', trigger: 'blur' },
+                    { required: true, message: this.$t('please_select_thumbnail'), trigger: 'blur' },
                 ],
             },
         }
@@ -85,13 +85,13 @@ export default {
                         if (response.data.errno === 0) {
                             this.$message({
                                 type: 'success',
-                                message: '保存成功'
+                                message: this.$t('saved_successfully')
                             });
                             this.$router.go(-1)
                         } else {
                             this.$message({
                                 type: 'error',
-                                message: '保存失败'
+                                message: this.$t('save_failed')
                             })
                         }
                     })

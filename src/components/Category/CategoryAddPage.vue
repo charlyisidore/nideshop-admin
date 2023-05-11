@@ -2,48 +2,48 @@
     <div class="content-page">
         <div class="content-nav">
             <el-breadcrumb class="breadcrumb" separator="/">
-                <el-breadcrumb-item :to="{ name: 'dashboard' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ infoForm.id ? '编辑分类' : '添加分类' }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ name: 'dashboard' }">{{ $t('home_page') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ $t('product_management') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ infoForm.id ? $t('editorial_categories') : $t('add_category') }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" icon="arrow-left">返回列表</el-button>
+                <el-button type="primary" @click="goBackPage" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
             </div>
         </div>
         <div class="content-main">
             <div class="form-table-box">
                 <el-form ref="infoForm" :rules="infoRules" :model="infoForm" label-width="120px">
-                    <el-form-item label="上级分类" prop="name">
-                        <el-select v-model="infoForm.parent_id" placeholder="请选择上级分类">
+                    <el-form-item :label="$t('higher_categories')" prop="name">
+                        <el-select v-model="infoForm.parent_id" :placeholder="$t('please_select_a_higher_category')">
                             <el-option v-for="item in parentCategory" :key="item.id" :label="item.name"
                                 :value="item.id"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="分类名称" prop="name">
+                    <el-form-item :label="$t('category_name')" prop="name">
                         <el-input v-model="infoForm.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="简短介绍" prop="front_name">
+                    <el-form-item :label="$t('short_introduction')" prop="front_name">
                         <el-input type="textarea" v-model="infoForm.front_name" :rows="1"></el-input>
                         <div class="form-tip"></div>
                     </el-form-item>
-                    <el-form-item label="图标" prop="wap_banner_url">
+                    <el-form-item :label="$t('icon')" prop="wap_banner_url">
                         <el-upload class="image-uploader" name="wap_banner_pic"
                             action="http://127.0.0.1:8360/admin/upload/categoryWapBannerPic" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.wap_banner_url" :src="infoForm.wap_banner_url" class="image-show">
                             <i v-else class="el-icon-plus image-uploader-icon"></i>
                         </el-upload>
-                        <div class="form-tip">图片尺寸：顶级分类为750*246，二级分类为250*250</div>
+                        <div class="form-tip">{{ $t('category_image_size_requirement') }}</div>
                     </el-form-item>
-                    <el-form-item label="排序">
+                    <el-form-item :label="$t('sort')">
                         <el-input-number v-model="infoForm.sort_order" :min="1" :max="1000"></el-input-number>
                     </el-form-item>
-                    <el-form-item label="启用">
+                    <el-form-item :label="$t('enable')">
                         <el-switch v-model="infoForm.is_show"></el-switch>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmitInfo">确定保存</el-button>
-                        <el-button @click="goBackPage">取消</el-button>
+                        <el-button type="primary" @click="onSubmitInfo">{{ $t('ok_to_save') }}</el-button>
+                        <el-button @click="goBackPage">{{ $t('cancel') }}</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -62,7 +62,7 @@ export default {
             parentCategory: [
                 {
                     id: 0,
-                    name: '顶级分类'
+                    name: this.$t('top_category')
                 }
             ],
             infoForm: {
@@ -76,13 +76,13 @@ export default {
             },
             infoRules: {
                 name: [
-                    { required: true, message: '请输入名称', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_the_name'), trigger: 'blur' },
                 ],
                 front_name: [
-                    { required: true, message: '请输入简介', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_profile'), trigger: 'blur' },
                 ],
                 wap_banner_url: [
-                    { required: true, message: '请选择分类图片', trigger: 'blur' },
+                    { required: true, message: this.$t('please_select_category_picture'), trigger: 'blur' },
                 ],
             },
         }
@@ -98,13 +98,13 @@ export default {
                         if (response.data.errno === 0) {
                             this.$message({
                                 type: 'success',
-                                message: '保存成功'
+                                message: this.$t('saved_successfully')
                             });
                             this.$router.go(-1)
                         } else {
                             this.$message({
                                 type: 'error',
-                                message: '保存失败'
+                                message: this.$t('save_failed')
                             })
                         }
                     })

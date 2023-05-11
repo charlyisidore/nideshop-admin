@@ -2,62 +2,62 @@
     <div class="content-page">
         <div class="content-nav">
             <el-breadcrumb class="breadcrumb" separator="/">
-                <el-breadcrumb-item :to="{ name: 'dashboard' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ infoForm.id ? '编辑商品' : '添加商品' }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ name: 'dashboard' }">{{ $t('home_page') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ $t('product_management') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ infoForm.id ? $t('edit_product') : $t('add_product') }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" icon="arrow-left">返回列表</el-button>
+                <el-button type="primary" @click="goBackPage" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
             </div>
         </div>
         <div class="content-main">
             <div class="form-table-box">
                 <el-form ref="infoForm" :rules="infoRules" :model="infoForm" label-width="120px">
-                    <el-form-item label="所属分类">
-                        <el-cascader :options="options" placeholder="请选择分类" v-model="selectedOptions"
+                    <el-form-item :label="$t('category')">
+                        <el-cascader :options="options" :placeholder="$t('please_select_category')" v-model="selectedOptions"
                             @change="handleChange">
                         </el-cascader>
                     </el-form-item>
-                    <el-form-item label="商品名称" prop="name">
+                    <el-form-item :label="$t('product_name')" prop="name">
                         <el-input v-model="infoForm.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="所属品牌">
-                        <el-select v-model="infoForm.region" placeholder="请选择商品">
-                            <el-option label="长城" value="shanghai"></el-option>
-                            <el-option label="宝马" value="beijing"></el-option>
+                    <el-form-item :label="$t('brand')">
+                        <el-select v-model="infoForm.region" :placeholder="$t('please_select_the_product')">
+                            <el-option :label="$t('great_wall')" value="shanghai"></el-option>
+                            <el-option :label="$t('bmw')" value="beijing"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="商品简介" prop="simple_desc">
+                    <el-form-item :label="$t('product_introduction')" prop="simple_desc">
                         <el-input type="textarea" v-model="infoForm.simple_desc" :rows="3"></el-input>
                         <div class="form-tip"></div>
                     </el-form-item>
-                    <el-form-item label="商品图片" prop="list_pic_url">
+                    <el-form-item :label="$t('pictures')" prop="list_pic_url">
                         <el-upload class="image-uploader" name="brand_pic"
                             action="http://127.0.0.1:8360/admin/upload/brandPic" :show-file-list="true"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.list_pic_url" :src="infoForm.list_pic_url" class="image-show">
                             <i v-else class="el-icon-plus image-uploader-icon"></i>
                         </el-upload>
-                        <div class="form-tip">图片尺寸：750*420</div>
+                        <div class="form-tip">{{ $t('image_750_420_size_requirement') }}</div>
                     </el-form-item>
-                    <el-form-item label="规格/库存" prop="simple_desc">
+                    <el-form-item :label="$t('specification_stock')" prop="simple_desc">
 
                     </el-form-item>
-                    <el-form-item label="推荐类型">
+                    <el-form-item :label="$t('recommend_type')">
                         <el-checkbox-group v-model="infoForm.type">
-                            <el-checkbox label="新品" name="type"></el-checkbox>
-                            <el-checkbox label="人气" name="type"></el-checkbox>
+                            <el-checkbox :label="$t('new_products')" name="type"></el-checkbox>
+                            <el-checkbox :label="$t('popularity')" name="type"></el-checkbox>
                         </el-checkbox-group>
                     </el-form-item>
-                    <el-form-item label="上架">
+                    <el-form-item :label="$t('uploaded')">
                         <el-switch on-text="" off-text="" v-model="infoForm.status"></el-switch>
                     </el-form-item>
-                    <el-form-item label="排序">
+                    <el-form-item :label="$t('sort')">
                         <el-input-number v-model="infoForm.sort_order" :min="1" :max="1000"></el-input-number>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmitInfo">确定保存</el-button>
-                        <el-button @click="goBackPage">取消</el-button>
+                        <el-button type="primary" @click="onSubmitInfo">{{ $t('ok_to_save') }}</el-button>
+                        <el-button @click="goBackPage">{{ $t('cancel') }}</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -89,13 +89,13 @@ export default {
             },
             infoRules: {
                 name: [
-                    { required: true, message: '请输入名称', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_the_name'), trigger: 'blur' },
                 ],
                 simple_desc: [
-                    { required: true, message: '请输入简介', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_profile'), trigger: 'blur' },
                 ],
                 list_pic_url: [
-                    { required: true, message: '请选择商品图片', trigger: 'blur' },
+                    { required: true, message: this.$t('please_select_a_product_image'), trigger: 'blur' },
                 ],
             },
         }
@@ -111,13 +111,13 @@ export default {
                         if (response.data.errno === 0) {
                             this.$message({
                                 type: 'success',
-                                message: '保存成功'
+                                message: this.$t('saved_successfully')
                             });
                             this.$router.go(-1)
                         } else {
                             this.$message({
                                 type: 'error',
-                                message: '保存失败'
+                                message: this.$t('save_failed')
                             })
                         }
                     })

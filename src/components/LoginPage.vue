@@ -5,17 +5,17 @@
                 <img src="/static/images/logo.png" />
             </div>
             <div class="body">
-                <p class="tips">欢迎使用NideShop后台管理</p>
+                <p class="tips">{{ $t('welcome_message') }}</p>
                 <el-form ref="form" :model="form" :rules="rules" label-position="top">
                     <el-form-item label="" prop="username">
-                        <el-input v-model="form.username" placeholder="用户名"></el-input>
+                        <el-input v-model="form.username" :placeholder="$t('username')"></el-input>
                     </el-form-item>
                     <el-form-item label="" prop="password">
-                        <el-input type="password" v-model="form.password" placeholder="密码"></el-input>
+                        <el-input type="password" v-model="form.password" :placeholder="$t('password')"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="startLogin" :loading="loading" style="width: 100%;">
-                            {{ loading ? '登录中...' : '登录' }}
+                            {{ loading ? $t('logging_in') : $t('login') }}
                         </el-button>
                     </el-form-item>
                 </el-form>
@@ -36,11 +36,11 @@ export default {
             },
             rules: {
                 username: [
-                    { required: true, message: '请输入用户名', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_user_name'), trigger: 'blur' },
                 ],
                 password: [
-                    { required: true, message: '请输入密码', trigger: 'blur' },
-                    { min: 6, message: '密码不得低于6个字符', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_the_password'), trigger: 'blur' },
+                    { min: 6, message: this.$t('password_length_requirement'), trigger: 'blur' },
                 ],
             },
             loading: false,

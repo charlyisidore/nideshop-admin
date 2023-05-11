@@ -7,93 +7,93 @@
             theme="dark" @close="handleClose">
             <el-menu-item index="/dashboard">
                 <i class="fa fa-tachometer"></i>
-                <span>后台主页</span>
+                <span>{{ $t('backstage_home') }}</span>
             </el-menu-item>
             <el-sub-menu index="goods">
                 <template #title>
                     <i class="fa fa-product-hunt"></i>
-                    <span>商品管理</span>
+                    <span>{{ $t('product_management') }}</span>
                 </template>
                 <el-menu-item index="/dashboard/goods">
                     <i class="fa fa-circle"></i>
-                    <span>商品列表</span>
+                    <span>{{ $t('product_list') }}</span>
                 </el-menu-item>
                 <el-menu-item index="/dashboard/category">
                     <i class="fa fa-circle"></i>
-                    <span>商品分类</span>
+                    <span>{{ $t('product_category') }}</span>
                 </el-menu-item>
                 <el-menu-item index="/dashboard/brand">
                     <i class="fa fa-circle"></i>
-                    <span>品牌管理</span>
+                    <span>{{ $t('brand_management') }}</span>
                 </el-menu-item>
             </el-sub-menu>
             <el-sub-menu index="order">
                 <template #title>
-                    <i class="fa fa-large fa-truck"></i>订单中心
+                    <i class="fa fa-large fa-truck"></i>{{ $t('order_center') }}
                 </template>
                 <el-menu-item index="/dashboard/order">
                     <i class="fa fa-circle"></i>
-                    <span>订单列表</span>
+                    <span>{{ $t('order_list') }}</span>
                 </el-menu-item>
                 <!--<el-menu-item index="/dashboard/order/detail">-->
                 <!--<i class="fa fa-circle"></i>-->
-                <!--<span>发货单</span>-->
+                <!--<span>{{ $t('shipping_order') }}</span>-->
                 <!--</el-menu-item>-->
                 <!--<el-menu-item index="/dashboard/order/detail">-->
                 <!--<i class="fa fa-circle"></i>-->
-                <!--<span>退/换货</span>-->
+                <!--<span>{{ $t('return_exchange') }}</span>-->
                 <!--</el-menu-item>-->
                 <!--<el-menu-item index="/dashboard/order/detail">-->
                 <!--<i class="fa fa-circle"></i>-->
-                <!--<span>订单评价</span>-->
+                <!--<span>{{ $t('order_evaluation') }}</span>-->
                 <!--</el-menu-item>-->
             </el-sub-menu>
             <el-sub-menu index="operate">
                 <template #title>
                     <i class="fa fa-large fa-truck"></i>
-                    <span>店铺运营</span>
+                    <span>{{ $t('store_operation') }}</span>
                 </template>
                 <el-menu-item index="/dashboard/operate/topic">
                     <i class="fa fa-circle"></i>
-                    <span>专题管理</span>
+                    <span>{{ $t('topic_management') }}</span>
                 </el-menu-item>
             </el-sub-menu>
             <!--<el-sub-menu index="total">-->
             <!--<template #title>-->
             <!--<i class="fa fa-large fa-line-chart"></i>-->
-            <!--<span>数据统计</span>-->
+            <!--<span>{{ $t('statistics') }}</span>-->
             <!--</template>-->
             <!--<el-menu-item index="/dashboard/total">-->
             <!--<i class="fa fa-circle"></i>-->
-            <!--<span>订单列表</span>-->
+            <!--<span>{{ $t('order_list') }}</span>-->
             <!--</el-menu-item>-->
             <!--</el-sub-menu>-->
             <el-sub-menu index="user">
                 <template #title>
                     <i class="fa fa-large fa-users"></i>
-                    <span>会员管理</span>
+                    <span>{{ $t('member_management') }}</span>
                 </template>
                 <el-menu-item index="/dashboard/user">
                     <i class="fa fa-circle"></i>
-                    <span>会员列表</span>
+                    <span>{{ $t('member_list') }}</span>
                 </el-menu-item>
             </el-sub-menu>
             <!--<el-sub-menu index="setting">-->
             <!--<template #title>-->
             <!--<i class="fa fa-large fa-wrench"></i>-->
-            <!--<span>店铺设置</span>-->
+            <!--<span>{{ $t('store_settings') }}</span>-->
             <!--</template>-->
             <!--<el-menu-item index="/dashboard/setting">-->
             <!--<i class="fa fa-circle"></i>-->
-            <!--<span>店铺信息</span>-->
+            <!--<span>{{ $t('store_information') }}</span>-->
             <!--</el-menu-item>-->
             <!--<el-menu-item index="/dashboard/setting/s">-->
             <!--<i class="fa fa-circle"></i>-->
-            <!--<span>微信设置</span>-->
+            <!--<span>{{ $t('wechat_settings') }}</span>-->
             <!--</el-menu-item>-->
             <!--<el-menu-item index="/dashboard/setting/a">-->
             <!--<i class="fa fa-circle"></i>-->
-            <!--<span>首页设置</span>-->
+            <!--<span>{{ $t('home_page_setting') }}</span>-->
             <!--</el-menu-item>-->
             <!--</el-sub-menu>-->
         </el-menu>

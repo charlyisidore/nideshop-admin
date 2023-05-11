@@ -2,27 +2,27 @@
     <div class="content-page">
         <div class="content-nav">
             <el-breadcrumb class="breadcrumb" separator="/">
-                <el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>订单中心</el-breadcrumb-item>
-                <el-breadcrumb-item>订单列表</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/dashboard' }">{{ $t('home_page') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ $t('order_center') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ $t('order_list') }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
                 <router-link to="/dashboard/order/add">
-                    <el-button type="primary" icon="plus">添加订单</el-button>
+                    <el-button type="primary" icon="plus">{{ $t('add_order') }}</el-button>
                 </router-link>
             </div>
         </div>
         <div class="content-main">
             <div class="filter-box">
                 <el-form :inline="true" :model="filterForm" class="demo-form-inline">
-                    <el-form-item label="订单号">
-                        <el-input v-model="filterForm.order_sn" placeholder="请输入订单号"></el-input>
+                    <el-form-item :label="$t('order_number')">
+                        <el-input v-model="filterForm.order_sn" :placeholder="$t('please_enter_order_number')"></el-input>
                     </el-form-item>
-                    <el-form-item label="收货人">
-                        <el-input v-model="filterForm.consignee" placeholder="请输入收货人"></el-input>
+                    <el-form-item :label="$t('consignee')">
+                        <el-input v-model="filterForm.consignee" :placeholder="$t('please_enter_the_consignee')"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmitFilter">查询</el-button>
+                        <el-button type="primary" @click="onSubmitFilter">{{ $t('inquiry') }}</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -30,21 +30,21 @@
                 <el-table :data="tableData" style="width: 100%" border stripe>
                     <el-table-column prop="id" label="ID" width="100">
                     </el-table-column>
-                    <el-table-column prop="order_sn" label="订单号">
+                    <el-table-column prop="order_sn" :label="$t('order_number')">
                     </el-table-column>
-                    <el-table-column prop="add_time" label="下单时间">
+                    <el-table-column prop="add_time" :label="$t('order_time')">
                     </el-table-column>
-                    <el-table-column prop="consignee" label="收货人">
+                    <el-table-column prop="consignee" :label="$t('consignee')">
                     </el-table-column>
-                    <el-table-column prop="actual_price" label="订单金额">
+                    <el-table-column prop="actual_price" :label="$t('order_amount')">
                     </el-table-column>
-                    <el-table-column prop="order_status_text" label="订单状态">
+                    <el-table-column prop="order_status_text" :label="$t('order_status')">
                     </el-table-column>
-                    <el-table-column label="操作" width="140">
+                    <el-table-column :label="$t('operation')" width="140">
                         <template #default="scope">
-                            <el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">查看</el-button>
+                            <el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">{{ $t('view') }}</el-button>
                             <el-button size="small" type="danger"
-                                @click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
+                                @click="handleRowDelete(scope.$index, scope.row)">{{ $t('delete_action') }}</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -84,9 +84,9 @@ export default {
         },
         handleRowDelete(index, row) {
 
-            this.$confirm('确定要删除?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
+            this.$confirm(this.$t('ok_to_delete'), this.$t('tip'), {
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel'),
                 type: 'warning'
             }).then(() => {
 
@@ -95,7 +95,7 @@ export default {
                     if (response.data.errno === 0) {
                         this.$message({
                             type: 'success',
-                            message: '删除成功!'
+                            message: this.$t('deleted_successfully')
                         });
 
                         this.getList();

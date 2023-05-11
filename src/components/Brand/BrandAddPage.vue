@@ -2,54 +2,54 @@
     <div class="content-page">
         <div class="content-nav">
             <el-breadcrumb class="breadcrumb" separator="/">
-                <el-breadcrumb-item :to="{ name: 'dashboard' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ infoForm.id ? '编辑品牌' : '添加品牌' }}</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ name: 'dashboard' }">{{ $t('home_page') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ $t('product_management') }}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ infoForm.id ? $t('edit_brand') : $t('add_brand') }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" icon="arrow-left">返回列表</el-button>
+                <el-button type="primary" @click="goBackPage" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
             </div>
         </div>
         <div class="content-main">
             <div class="form-table-box">
                 <el-form ref="infoForm" :rules="infoRules" :model="infoForm" label-width="120px">
-                    <el-form-item label="品牌名称" prop="name">
+                    <el-form-item :label="$t('brand_name')" prop="name">
                         <el-input v-model="infoForm.name"></el-input>
                     </el-form-item>
-                    <el-form-item label="品牌简介" prop="simple_desc">
+                    <el-form-item :label="$t('brand_introduction')" prop="simple_desc">
                         <el-input type="textarea" v-model="infoForm.simple_desc" :rows="3"></el-input>
                         <div class="form-tip"></div>
                     </el-form-item>
-                    <el-form-item label="品牌图片" prop="list_pic_url">
+                    <el-form-item :label="$t('brand_picture')" prop="list_pic_url">
                         <el-upload class="image-uploader" name="brand_pic"
                             action="http://127.0.0.1:8360/admin/upload/brandPic" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.list_pic_url" :src="infoForm.list_pic_url" class="image-show">
                             <i v-else class="el-icon-plus image-uploader-icon"></i>
                         </el-upload>
-                        <div class="form-tip">图片尺寸：750*420</div>
+                        <div class="form-tip">{{ $t('image_750_420_size_requirement') }}</div>
                     </el-form-item>
-                    <el-form-item label="推荐">
+                    <el-form-item :label="$t('recommend')">
                         <el-checkbox label="" v-model="infoForm.is_new"></el-checkbox>
                     </el-form-item>
-                    <el-form-item label="推荐展示图片" v-if="infoForm.is_new">
+                    <el-form-item :label="$t('recommend_show_picture')" v-if="infoForm.is_new">
                         <el-upload class="image-uploader new-image-uploader" name="brand_new_pic"
                             action="http://127.0.0.1:8360/admin/upload/brandNewPic" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.new_pic_url" :src="infoForm.new_pic_url" class="image-show">
                             <i v-else class="el-icon-plus image-uploader-icon"></i>
                         </el-upload>
-                        <div class="form-tip">图片尺寸：375*252</div>
+                        <div class="form-tip">{{ $t('image_375_252_size_requirement') }}</div>
                     </el-form-item>
-                    <el-form-item label="排序">
+                    <el-form-item :label="$t('sort')">
                         <el-input-number v-model="infoForm.sort_order" :min="1" :max="1000"></el-input-number>
                     </el-form-item>
-                    <el-form-item label="启用">
+                    <el-form-item :label="$t('enable')">
                         <el-switch v-model="infoForm.is_show"></el-switch>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="onSubmitInfo">确定保存</el-button>
-                        <el-button @click="goBackPage">取消</el-button>
+                        <el-button type="primary" @click="onSubmitInfo">{{ $t('ok_to_save') }}</el-button>
+                        <el-button @click="goBackPage">{{ $t('cancel') }}</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -81,13 +81,13 @@ export default {
             },
             infoRules: {
                 name: [
-                    { required: true, message: '请输入名称', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_the_name'), trigger: 'blur' },
                 ],
                 simple_desc: [
-                    { required: true, message: '请输入简介', trigger: 'blur' },
+                    { required: true, message: this.$t('please_enter_profile'), trigger: 'blur' },
                 ],
                 list_pic_url: [
-                    { required: true, message: '请选择品牌图片', trigger: 'blur' },
+                    { required: true, message: this.$t('please_select_brand_picture'), trigger: 'blur' },
                 ],
             },
         }
@@ -103,13 +103,13 @@ export default {
                         if (response.data.errno === 0) {
                             this.$message({
                                 type: 'success',
-                                message: '保存成功'
+                                message: this.$t('saved_successfully')
                             });
                             this.$router.go(-1)
                         } else {
                             this.$message({
                                 type: 'error',
-                                message: '保存失败'
+                                message: this.$t('save_failed')
                             })
                         }
                     })

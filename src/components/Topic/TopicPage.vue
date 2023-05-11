@@ -2,24 +2,24 @@
 	<div class="content-page">
 		<div class="content-nav">
 			<el-breadcrumb class="breadcrumb" separator="/">
-				<el-breadcrumb-item :to="{ path: '/dashboard' }">首页</el-breadcrumb-item>
-				<el-breadcrumb-item>店铺运营</el-breadcrumb-item>
-				<el-breadcrumb-item>专题管理</el-breadcrumb-item>
+				<el-breadcrumb-item :to="{ path: '/dashboard' }">{{ $t('home_page') }}</el-breadcrumb-item>
+				<el-breadcrumb-item>{{ $t('store_operation') }}</el-breadcrumb-item>
+				<el-breadcrumb-item>{{ $t('topic_management') }}</el-breadcrumb-item>
 			</el-breadcrumb>
 			<div class="operation-nav">
 				<router-link to="/dashboard/operate/topic/add">
-					<el-button type="primary" icon="plus">添加专题</el-button>
+					<el-button type="primary" icon="plus">{{ $t('add_topic') }}</el-button>
 				</router-link>
 			</div>
 		</div>
 		<div class="content-main">
 			<div class="filter-box">
 				<el-form :inline="true" :model="filterForm" class="demo-form-inline">
-					<el-form-item label="专题名称">
-						<el-input v-model="filterForm.name" placeholder="专题名称"></el-input>
+					<el-form-item :label="$t('topic_name')">
+						<el-input v-model="filterForm.name" :placeholder="$t('topic_name')"></el-input>
 					</el-form-item>
 					<el-form-item>
-						<el-button type="primary" @click="onSubmitFilter">查询</el-button>
+						<el-button type="primary" @click="onSubmitFilter">{{ $t('inquiry') }}</el-button>
 					</el-form-item>
 				</el-form>
 			</div>
@@ -27,20 +27,20 @@
 				<el-table :data="tableData" style="width: 100%" border stripe>
 					<el-table-column prop="id" label="ID" width="100">
 					</el-table-column>
-					<el-table-column prop="title" label="专题名称">
+					<el-table-column prop="title" :label="$t('topic_name')">
 					</el-table-column>
-					<el-table-column prop="is_show" label="是否显示" width="100">
+					<el-table-column prop="is_show" :label="$t('whether_to_show')" width="100">
 						<template #default="scope">
-							{{ scope.row.is_show == 1 ? '是' : '否' }}
+							{{ scope.row.is_show == 1 ? $t('yes') : $t('no') }}
 						</template>
 					</el-table-column>
-					<el-table-column prop="sort_order" label="排序" width="80">
+					<el-table-column prop="sort_order" :label="$t('sort')" width="80">
 					</el-table-column>
-					<el-table-column label="操作" width="140">
+					<el-table-column :label="$t('operation')" width="140">
 						<template #default="scope">
-							<el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">编辑</el-button>
+							<el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">{{ $t('edit') }}</el-button>
 							<el-button size="small" type="danger"
-								@click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
+								@click="handleRowDelete(scope.$index, scope.row)">{{ $t('delete_action') }}</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -80,9 +80,9 @@ export default {
 		},
 		handleRowDelete(index, row) {
 
-			this.$confirm('确定要删除?', '提示', {
-				confirmButtonText: '确定',
-				cancelButtonText: '取消',
+			this.$confirm(this.$t('ok_to_delete'), this.$t('tip'), {
+				confirmButtonText: this.$t('ok'),
+				cancelButtonText: this.$t('cancel'),
 				type: 'warning'
 			}).then(() => {
 
@@ -91,7 +91,7 @@ export default {
 					if (response.data.errno === 0) {
 						this.$message({
 							type: 'success',
-							message: '删除成功!'
+							message: this.$t('deleted_successfully')
 						});
 
 						this.getList();

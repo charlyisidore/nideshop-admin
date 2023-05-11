@@ -5,11 +5,11 @@
                 订单详情
             </div>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" size="small" icon="arrow-left">返回列表</el-button>
+                <el-button type="primary" @click="goBackPage" size="small" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
             </div>
         </div>
         <div class="content-main">
-            <div class="form-table-box" v-loading="pageLoading" element-loading-text="拼命加载中">
+            <div class="form-table-box" v-loading="pageLoading" :element-loading-text="$t('desperately_loading')">
 
             </div>
         </div>
