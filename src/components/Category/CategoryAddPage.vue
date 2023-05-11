@@ -34,7 +34,7 @@
                             action="http://127.0.0.1:8360/admin/upload/categoryWapBannerPic" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.wap_banner_url" :src="infoForm.wap_banner_url" class="image-show">
-                            <i v-else class="el-icon-plus image-uploader-icon"></i>
+                            <el-icon v-else class="image-uploader-icon"><Plus /></el-icon>
                         </el-upload>
                         <div class="form-tip">{{ $t('category_image_size_requirement') }}</div>
                     </el-form-item>
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { ArrowLeft } from '@element-plus/icons-vue';
+import { ArrowLeft, Plus } from '@element-plus/icons-vue';
 import api from '@/config/api';
 export default {
     data() {
@@ -156,6 +156,7 @@ export default {
     },
     components: {
         ArrowLeft,
+        Plus,
     },
     mounted() {
         this.getTopCategory();

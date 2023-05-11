@@ -28,7 +28,7 @@
                             action="http://127.0.0.1:8360/admin/upload/brandPic" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.list_pic_url" :src="infoForm.list_pic_url" class="image-show">
-                            <i v-else class="el-icon-plus image-uploader-icon"></i>
+                            <el-icon v-else class="image-uploader-icon"><Plus /></el-icon>
                         </el-upload>
                         <div class="form-tip">{{ $t('image_750_420_size_requirement') }}</div>
                     </el-form-item>
@@ -40,7 +40,7 @@
                             action="http://127.0.0.1:8360/admin/upload/brandNewPic" :show-file-list="false"
                             :on-success="handleUploadImageSuccess" :headers="uploaderHeader">
                             <img v-if="infoForm.new_pic_url" :src="infoForm.new_pic_url" class="image-show">
-                            <i v-else class="el-icon-plus image-uploader-icon"></i>
+                            <el-icon v-else class="image-uploader-icon"><Plus /></el-icon>
                         </el-upload>
                         <div class="form-tip">{{ $t('image_375_252_size_requirement') }}</div>
                     </el-form-item>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { ArrowLeft } from '@element-plus/icons-vue';
+import { ArrowLeft, Plus } from '@element-plus/icons-vue';
 import api from '@/config/api';
 export default {
     data() {
@@ -159,6 +159,7 @@ export default {
     },
     components: {
         ArrowLeft,
+        Plus,
     },
     mounted() {
         this.infoForm.id = this.$route.query.id || 0;
