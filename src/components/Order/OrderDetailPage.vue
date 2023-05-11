@@ -5,7 +5,10 @@
                 订单详情
             </div>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" size="small" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
+                <el-button type="primary" @click="goBackPage" size="small">
+                    <el-icon><ArrowLeft /></el-icon>
+                    {{ $t('back_to_list') }}
+                </el-button>
             </div>
         </div>
         <div class="content-main">
@@ -17,6 +20,7 @@
 </template>
 
 <script>
+import { ArrowLeft } from '@element-plus/icons-vue';
 export default {
     data() {
         return {
@@ -51,7 +55,9 @@ export default {
         }
 
     },
-    components: {},
+    components: {
+        ArrowLeft,
+    },
     mounted() {
         console.log(this.$route.query)
         this.infoForm.id = this.$route.query.id || 0;

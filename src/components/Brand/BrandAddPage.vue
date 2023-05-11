@@ -7,7 +7,10 @@
                 <el-breadcrumb-item>{{ infoForm.id ? $t('edit_brand') : $t('add_brand') }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div class="operation-nav">
-                <el-button type="primary" @click="goBackPage" icon="arrow-left">{{ $t('back_to_list') }}</el-button>
+                <el-button type="primary" @click="goBackPage">
+                    <el-icon><ArrowLeft /></el-icon>
+                    {{ $t('back_to_list') }}
+                </el-button>
             </div>
         </div>
         <div class="content-main">
@@ -58,6 +61,7 @@
 </template>
 
 <script>
+import { ArrowLeft } from '@element-plus/icons-vue';
 import api from '@/config/api';
 export default {
     data() {
@@ -153,7 +157,9 @@ export default {
         }
 
     },
-    components: {},
+    components: {
+        ArrowLeft,
+    },
     mounted() {
         this.infoForm.id = this.$route.query.id || 0;
         this.getInfo();
