@@ -2,7 +2,7 @@
 
 # nideshop-admin
 
-Node.js open source mall NideShop management backend (based on [Node.js](https://nodejs.org/), [Vue.js](https://vuejs.org/), [Element Plus](https://element-plus.org/zh-CN/))
+Node.js open source mall NideShop management backend (based on [Node.js](https://nodejs.org/), [Vue.js](https://vuejs.org/), [Element Plus](https://element-plus.org/en-US/))
 
 ## Features
 
