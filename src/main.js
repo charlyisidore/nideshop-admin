@@ -4,7 +4,7 @@ import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
-import App from './App'
+import App from './App.vue'
 import router from './router'
 
 Vue.use(VueAxios, Axios);

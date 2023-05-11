@@ -37,8 +37,8 @@
     </div>
 </template>
 <script>
-    import Sidebar from './Common/Sidebar';
-    import Navbar from './Common/Navbar';
+    import Sidebar from './Common/Sidebar.vue';
+    import Navbar from './Common/Navbar.vue';
 
     export default {
         data() {
