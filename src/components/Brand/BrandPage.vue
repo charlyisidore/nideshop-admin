@@ -44,13 +44,15 @@
 					<el-table-column label="操作" width="140">
 						<template #default="scope">
 							<el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button size="small" type="danger" @click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
+							<el-button size="small" type="danger"
+								@click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
 			</div>
 			<div class="page-box">
-				<el-pagination @current-change="handlePageChange" :current-page="page" :page-size="10" layout="total, prev, pager, next, jumper" :total="total">
+				<el-pagination @current-change="handlePageChange" :current-page="page" :page-size="10"
+					layout="total, prev, pager, next, jumper" :total="total">
 				</el-pagination>
 			</div>
 		</div>
@@ -58,7 +60,6 @@
 </template>
 
 <script>
-
 export default {
 	data() {
 		return {
@@ -116,9 +117,9 @@ export default {
 					name: this.filterForm.name
 				}
 			}).then((response) => {
-                this.tableData = response.data.data.data
-                this.page = response.data.data.currentPage
-                this.total = response.data.data.count
+				this.tableData = response.data.data.data
+				this.page = response.data.data.currentPage
+				this.total = response.data.data.count
 			})
 		}
 	},
@@ -129,9 +130,6 @@ export default {
 		this.getList();
 	}
 }
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -53,13 +53,15 @@
                     <el-table-column label="操作" width="140">
                         <template #default="scope">
                             <el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">编辑</el-button>
-                            <el-button size="small" type="danger" @click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
+                            <el-button size="small" type="danger"
+                                @click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
             </div>
             <div class="page-box">
-                <el-pagination @current-change="handlePageChange" :current-page="page" :page-size="10" layout="total, prev, pager, next, jumper" :total="total">
+                <el-pagination @current-change="handlePageChange" :current-page="page" :page-size="10"
+                    layout="total, prev, pager, next, jumper" :total="total">
                 </el-pagination>
             </div>
         </div>
@@ -67,80 +69,76 @@
 </template>
 
 <script>
-
-  export default {
+export default {
     data() {
-      return {
-        page: 1,
-        total: 0,
-        filterForm: {
-          name: ''
-        },
-        tableData: []
-      }
+        return {
+            page: 1,
+            total: 0,
+            filterForm: {
+                name: ''
+            },
+            tableData: []
+        }
     },
     methods: {
-      handlePageChange(val) {
-        this.page = val;
-        // 保存到localStorage
-        // Save to localStorage
-        localStorage.setItem('goodsPage', this.page)
-        localStorage.setItem('goodsFilterForm', JSON.stringify(this.filterForm));
-        this.getList()
-      },
-      handleRowEdit(index, row) {
-        this.$router.push({ name: 'goods_add', query: { id: row.id } })
-      },
-      handleRowDelete(index, row) {
+        handlePageChange(val) {
+            this.page = val;
+            // 保存到localStorage
+            // Save to localStorage
+            localStorage.setItem('goodsPage', this.page)
+            localStorage.setItem('goodsFilterForm', JSON.stringify(this.filterForm));
+            this.getList()
+        },
+        handleRowEdit(index, row) {
+            this.$router.push({ name: 'goods_add', query: { id: row.id } })
+        },
+        handleRowDelete(index, row) {
 
-        this.$confirm('确定要删除?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
+            this.$confirm('确定要删除?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
 
-          this.axios.post('商品/destory', { id: row.id }).then((response) => {
-            console.log(response.data)
-            if (response.data.errno === 0) {
-              this.$message({
-                type: 'success',
-                message: '删除成功!'
-              });
+                this.axios.post('商品/destory', { id: row.id }).then((response) => {
+                    console.log(response.data)
+                    if (response.data.errno === 0) {
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
 
-              this.getList();
-            }
-          })
+                        this.getList();
+                    }
+                })
 
 
-        });
-      },
-      onSubmitFilter() {
-        this.page = 1
-        this.getList()
-      },
-      getList() {
-        this.axios.get('goods', {
-          params: {
-            page: this.page,
-            name: this.filterForm.name
-          }
-        }).then((response) => {
-          this.tableData = response.data.data.data
-          this.page = response.data.data.currentPage
-          this.total = response.data.data.count
-        })
-      }
+            });
+        },
+        onSubmitFilter() {
+            this.page = 1
+            this.getList()
+        },
+        getList() {
+            this.axios.get('goods', {
+                params: {
+                    page: this.page,
+                    name: this.filterForm.name
+                }
+            }).then((response) => {
+                this.tableData = response.data.data.data
+                this.page = response.data.data.currentPage
+                this.total = response.data.data.count
+            })
+        }
     },
     components: {
 
     },
     mounted() {
-      this.getList();
+        this.getList();
     }
-  }
-
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

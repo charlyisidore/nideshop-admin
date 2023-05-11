@@ -10,57 +10,54 @@
         </div>
         <div class="content-main">
             <div class="form-table-box" v-loading="pageLoading" element-loading-text="拼命加载中">
-               
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                pageLoading: false,
-                infoForm: {
-                    id: 0,
-                }
+export default {
+    data() {
+        return {
+            pageLoading: false,
+            infoForm: {
+                id: 0,
             }
-        },
-        methods: {
-            goBackPage() {
-                this.$router.go(-1);
-            },
-            getInfo() {
-                if (this.infoForm.id <= 0) {
-                    return false
-                }
-
-                // 加载品牌详情
-                // Load Brand Details
-                let that = this
-                this.axios.get('http://127.0.0.1:8360/admin/brand/info', {
-                    params: {
-                        id: that.infoForm.id
-                    }
-                }).then((response) => {
-                    console.log(response.data);
-                    let resInfo = response.data.data;
-                    that.infoForm = resInfo;
-                    this.pageLoading = false;
-                })
-            }
-
-        },
-        components: {},
-        mounted() {
-            console.log(this.$route.query)
-            this.infoForm.id = this.$route.query.id || 0;
-            this.getInfo();
         }
-    }
+    },
+    methods: {
+        goBackPage() {
+            this.$router.go(-1);
+        },
+        getInfo() {
+            if (this.infoForm.id <= 0) {
+                return false
+            }
 
+            // 加载品牌详情
+            // Load Brand Details
+            let that = this
+            this.axios.get('http://127.0.0.1:8360/admin/brand/info', {
+                params: {
+                    id: that.infoForm.id
+                }
+            }).then((response) => {
+                console.log(response.data);
+                let resInfo = response.data.data;
+                that.infoForm = resInfo;
+                this.pageLoading = false;
+            })
+        }
+
+    },
+    components: {},
+    mounted() {
+        console.log(this.$route.query)
+        this.infoForm.id = this.$route.query.id || 0;
+        this.getInfo();
+    }
+}
 </script>
 
-<style>
-   
-</style>
+<style></style>
