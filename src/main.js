@@ -1,22 +1,20 @@
-import Vue from 'vue'
-import Axios from 'axios'
-import VueAxios from 'vue-axios'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-plus/dist/index.css'
 
+import { createApp } from 'vue'
+import axios from 'axios'
+import ElementPlus from 'element-plus'
+import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
 
-Vue.use(VueAxios, Axios);
-Vue.use(ElementUI);
+const app = createApp(App)
 
 router.beforeEach((to, from, next) => {
-
 	let token = localStorage.getItem('token') || '';
 
-    //配置接口信息
-    Axios.defaults.baseURL = 'http://127.0.0.1:8360/admin/';
-    Axios.defaults.headers.common['X-Nideshop-Token'] = token;
+	// 配置接口信息
+	axios.defaults.baseURL = 'http://127.0.0.1:8360/admin/';
+	axios.defaults.headers.common['X-Nideshop-Token'] = token;
 
 	if (!token && to.name !== 'login') {
 		next({
@@ -28,11 +26,8 @@ router.beforeEach((to, from, next) => {
 	}
 });
 
-Vue.config.productionTip = false
+app.use(VueAxios, axios)
+app.use(ElementPlus)
+app.use(router)
 
-/* eslint-disable no-new */
-new Vue({
-  components: { App },
-  router,
-  template: '<App/>'
-}).$mount('#app')
+app.mount('#app')
