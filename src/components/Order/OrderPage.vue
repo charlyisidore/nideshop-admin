@@ -8,7 +8,10 @@
             </el-breadcrumb>
             <div class="operation-nav">
                 <router-link to="/dashboard/order/add">
-                    <el-button type="primary" icon="plus">{{ $t('add_order') }}</el-button>
+                    <el-button type="primary">
+                        <el-icon><Plus /></el-icon>
+                        {{ $t('add_order') }}
+                    </el-button>
                 </router-link>
             </div>
         </div>
@@ -59,6 +62,7 @@
 </template>
 
 <script>
+import { Plus } from '@element-plus/icons-vue';
 export default {
     data() {
         return {
@@ -124,7 +128,7 @@ export default {
         }
     },
     components: {
-
+        Plus,
     },
     mounted() {
         this.getList();
