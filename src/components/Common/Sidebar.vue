@@ -141,7 +141,6 @@ export default {
     width: 200px;
     flex: 1;
     border-radius: 0;
-    background: #324157;
 }
 
 .left-box .fa {
