@@ -9,8 +9,8 @@
                 <i class="fa fa-tachometer"></i>
                 <span>后台主页</span>
             </el-menu-item>
-            <el-submenu index="goods">
-                <template slot="title">
+            <el-sub-menu index="goods">
+                <template #title>
                     <i class="fa fa-product-hunt"></i>
                     <span>商品管理</span>
                 </template>
@@ -26,9 +26,9 @@
                     <i class="fa fa-circle"></i>
                     <span>品牌管理</span>
                 </el-menu-item>
-            </el-submenu>
-            <el-submenu index="order">
-                <template slot="title">
+            </el-sub-menu>
+            <el-sub-menu index="order">
+                <template #title>
                     <i class="fa fa-large fa-truck"></i>订单中心
                 </template>
                 <el-menu-item index="/dashboard/order">
@@ -47,9 +47,9 @@
                     <!--<i class="fa fa-circle"></i>-->
                     <!--<span>订单评价</span>-->
                 <!--</el-menu-item>-->
-            </el-submenu>
-            <el-submenu index="operate">
-                <template slot="title">
+            </el-sub-menu>
+            <el-sub-menu index="operate">
+                <template #title>
                     <i class="fa fa-large fa-truck"></i>
                     <span>店铺运营</span>
                 </template>
@@ -57,9 +57,9 @@
                     <i class="fa fa-circle"></i>
                     <span>专题管理</span>
                 </el-menu-item>
-            </el-submenu>
-            <!--<el-submenu index="total">-->
-                <!--<template slot="title">-->
+            </el-sub-menu>
+            <!--<el-sub-menu index="total">-->
+                <!--<template #title>-->
                     <!--<i class="fa fa-large fa-line-chart"></i>-->
                     <!--<span>数据统计</span>-->
                 <!--</template>-->
@@ -67,9 +67,9 @@
                     <!--<i class="fa fa-circle"></i>-->
                     <!--<span>订单列表</span>-->
                 <!--</el-menu-item>-->
-            <!--</el-submenu>-->
-            <el-submenu index="user">
-                <template slot="title">
+            <!--</el-sub-menu>-->
+            <el-sub-menu index="user">
+                <template #title>
                     <i class="fa fa-large fa-users"></i>
                     <span>会员管理</span>
                 </template>
@@ -77,9 +77,9 @@
                     <i class="fa fa-circle"></i>
                     <span>会员列表</span>
                 </el-menu-item>
-            </el-submenu>
-            <!--<el-submenu index="setting">-->
-                <!--<template slot="title">-->
+            </el-sub-menu>
+            <!--<el-sub-menu index="setting">-->
+                <!--<template #title>-->
                     <!--<i class="fa fa-large fa-wrench"></i>-->
                     <!--<span>店铺设置</span>-->
                 <!--</template>-->
@@ -95,7 +95,7 @@
                     <!--<i class="fa fa-circle"></i>-->
                     <!--<span>首页设置</span>-->
                 <!--</el-menu-item>-->
-            <!--</el-submenu>-->
+            <!--</el-sub-menu>-->
         </el-menu>
     </div>
 </template>
@@ -150,7 +150,7 @@
         font-size: 18px;
     }
 
-    .left-box .el-submenu .el-menu-item .fa {
+    .left-box .el-sub-menu .el-menu-item .fa {
         margin-right: 10px;
         font-size: 10px;
     }
