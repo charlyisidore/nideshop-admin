@@ -13,6 +13,7 @@ router.beforeEach((to, from, next) => {
 	let token = localStorage.getItem('token') || '';
 
 	// 配置接口信息
+	// Configure interface information
 	axios.defaults.baseURL = 'http://127.0.0.1:8360/admin/';
 	axios.defaults.headers.common['X-Nideshop-Token'] = token;
 

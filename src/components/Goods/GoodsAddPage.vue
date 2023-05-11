@@ -128,7 +128,8 @@
       handleUploadImageSuccess(res, file) {
         if (res.errno === 0) {
           switch (res.data.name) {
-            //商品图片
+            // 商品图片
+            // Pictures
             case 'brand_pic':
               this.$set('infoForm.list_pic_url', res.data.fileUrl);
               break;
@@ -143,7 +144,8 @@
           return false
         }
 
-        //加载商品详情
+        // 加载商品详情
+        // Load product details
         let that = this
         this.axios.get('brand/info', {
           params: {

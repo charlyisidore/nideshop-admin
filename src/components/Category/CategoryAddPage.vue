@@ -115,7 +115,8 @@
       handleUploadImageSuccess(res, file) {
         if (res.errno === 0) {
           switch (res.data.name) {
-            //分类图片
+            // 分类图片
+            // Category picture
             case 'wap_banner_url':
 //              this.$set('infoForm.wap_banner_url', res.data.fileUrl);
               this.infoForm.wap_banner_url = res.data.fileUrl;
@@ -133,7 +134,8 @@
           return false
         }
 
-        //加载分类详情
+        // 加载分类详情
+        // Load category details
         let that = this
         this.axios.get('category/info', {
           params: {

@@ -35,7 +35,8 @@
                     return false
                 }
 
-                //加载品牌详情
+                // 加载品牌详情
+                // Load Brand Details
                 let that = this
                 this.axios.get('http://127.0.0.1:8360/admin/brand/info', {
                     params: {

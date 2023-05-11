@@ -72,7 +72,8 @@ export default {
 	methods: {
 		handlePageChange(val) {
 			this.page = val;
-			//保存到localStorage
+			// 保存到localStorage
+			// Save to localStorage
 			localStorage.setItem('userPage', this.page)
 			localStorage.setItem('userFilterForm', JSON.stringify(this.filterForm));
 			this.getList()

@@ -103,7 +103,8 @@
             handleUploadImageSuccess(res, file) {
                 if (res.errno === 0) {
                     switch (res.data.name) {
-                        //专题图片
+                        // 专题图片
+                        // Topic picture
                         case 'scene_pic_url':
                           this.infoForm.scene_pic_url = res.data.fileUrl;
                             break;
@@ -115,7 +116,8 @@
                     return false
                 }
 
-                //加载专题详情
+                // 加载专题详情
+                // Load feature details
                 let that = this
                 this.axios.get('topic/info', {
                     params: {
