@@ -32,7 +32,7 @@
 					<el-table-column prop="nickname" label="呢称">
 					</el-table-column>
 					<el-table-column prop="gender" label="性别" width="120">
-						<template scope="scope">
+						<template #default="scope">
 							{{ scope.row.gender == 1 ? '女' : '男' }}
 						</template>
 					</el-table-column>
@@ -41,7 +41,7 @@
 					<el-table-column prop="register_time" label="注册时间">
 					</el-table-column>
 					<el-table-column label="操作" width="140">
-						<template scope="scope">
+						<template #default="scope">
 							<!--<el-button size="small" @click="handleRowEdit(scope.$index, scope.row)">编辑</el-button>-->
 							<el-button size="small" type="danger" @click="handleRowDelete(scope.$index, scope.row)">删除</el-button>
 						</template>
